@@ -28,6 +28,10 @@
 
 ![mllm_idea](src/pictures/001_MLLMs_idea.png)
 
+
+<div style="text-align: center">
+  <img src="src/pictures/001_MLLMs_idea.png" alt="MLLM концепция" style="max-width: 60%; height: auto"/>
+</div>
 ---
 
 ## 2. Static Benchmarks
