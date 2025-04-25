@@ -33,8 +33,8 @@
 ---
 
 ## 2. Static Benchmarks
-### 1. GQA: Compositional Visual Question Answering Benchmark
-**Hudson A. et al.** *"GQA: A New Dataset for Real-World Visual Reasoning and Compositional Question Answering"*  
+### 2.1 GQA: Compositional Visual Question Answering Benchmark
+> **Hudson A. et al.** *"GQA: A New Dataset for Real-World Visual Reasoning and Compositional Question Answering"*  
 **CVPR 2019** | [Article](https://arxiv.org/pdf/1902.09506) | [Dataset](https://cs.stanford.edu/people/dorarad/gqa/)
 
 GQA (Visual Question Answering) — это датасет для оценки способности моделей к реальному визуальному мышлению, по композиционным вопросам.
@@ -69,11 +69,9 @@ GQA (Visual Question Answering) — это датасет для оценки с
     3. **Композиционные** (многоуровневые):
     *"Какого цвета еда на красном объекте слева от девочки?"*
 
----
-
-### 2. AI2D Diagram Understanding Benchmark
-**Kembhavi A. et al.** *"A Diagram is Worth A Dozen Images"*  
-**ECCV 2016** | [Article](https://arxiv.org/pdf/1603.07396) | [Dataset](https://huggingface.co/datasets/lmms-lab/ai2d)  
+### 2.2 AI2D Diagram Understanding Benchmark
+> **Kembhavi A. et al.** *"A Diagram is Worth A Dozen Images"*  
+**ECCV 2016** | [Article](https://arxiv.org/pdf/1603.07396) | [Dataset](https://huggingface.co/datasets/lmms-lab/ai2d)
 
 #### 📌 Характеристики  
 - **5k изображений** из школьных учебников (физика, биология)  
@@ -93,18 +91,21 @@ GQA (Visual Question Answering) — это датасет для оценки с
 
 > *Современный подход*: Используют End-to-end подход к предсказаниям, т.е напрямую из изображения диаграммы, вместе с вопросом, получают ответ (в таком формате обычно этот датасет используется для тестирования моделей). 
 
----
 
+### 2.3 MMMU
+> **X. Yue. et al.** *"MMMU: A Massive Multi-discipline Multimodal Understanding and Reasoning Benchmark for Expert AGI"*  
+**CVPR 2024** | [Article](https://arxiv.org/pdf/2311.16502) | [Dataset](https://huggingface.co/datasets/MMMU/MMMU)
 
+Студенты и аспиранты, находили учебники по разным дицсиплинам (смотрели чтобы не было проблем с лиценизей) и они искали какие-то задания в этих учебниках и вопросы (в первую очередь тестовые).
+Чтобы проверить качество ответа нам нужно с одной стороны запромтить MLLM-ку, с другой стороны посчитать какую-то детерменнированную метрику точности. В статье авторы рассказаывали про сложный пайлпайн regeexps
+#### 📌 Характеристики  
+- **11.5k вопросов и изображений** из 6 университетских дисциплин  
+- **Графовая разметка**:  
+  - Полуавтоматическое выделение объектов и связей (стрелки, подписи)  
+  - Семантическая структура диаграмм → вопросы  
+- 📊 **Метрика**: Accuracy
 
-
-
-
-
-
-
-
-
+[![MMMU_benchmark](src/pictures/004_MMMU_benchmark.png)](https://arxiv.org/pdf/2311.16502)
 
 ### 📊 Примеры бенчмарков
 | Название         | Задача                  | Модальности       |
