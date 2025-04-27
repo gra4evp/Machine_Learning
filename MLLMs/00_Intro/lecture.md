@@ -188,6 +188,9 @@ GQA (Visual Question Answering) — это датасет для оценки с
      ANLS = 1 - min(1, levenshtein_distance(pred, gt) / max_len(pred, gt))
      ```
 
+[![DocVQA_benchmark](src/pictures/006_DocVQA_benchmark.png)](https://arxiv.org/pdf/2007.00398)
+
+
 #### 🔍 Ключевые особенности  
 1. **Специфика документов**:  
    - Сложная структура (таблицы, схемы, многоуровневые списки)  
