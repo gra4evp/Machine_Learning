@@ -363,11 +363,11 @@ CLIP представляет собой симметричную архитек
 
 Обозначим **Image Encoder**, как функцию $f(\cdot)$, а **Text Encoder** как функцию $g(\cdot)$, тогда для мини-батча $B = \{(I_1, T_1), (I_2, T_2), . . . \}$, функция потерь можно записать как:
 
-$$
+```math
 \mathcal{L}_{CLIP} = -\frac{1}{2|\mathcal{B}|} \sum_i^{|\mathcal{B}|} \left(
    \log\frac{e^{t\mathbf{x}_{i} \cdot \mathbf{y}_{i}}} {\sum_{j=1}^{|B|}e^{t\mathbf{x}_{i} \cdot \mathbf{y}_{j}}} + \log \frac{e^{t\mathbf{x}_{i} \cdot \mathbf{y}_{i}}} {\sum_{j=1}^{|B|}e^{t\mathbf{x}_{j}\cdot\mathbf{y}_{i}}}   
 \right)
-$$
+```
 
 где:
 - $\mathbf{x}_{i}=\frac{f(I_{i})}{\|I(I_{i})\|_{2}}$
