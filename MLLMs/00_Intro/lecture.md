@@ -276,11 +276,18 @@ P(i  j) = \frac{1}{1 + 10^{(R_j - R_i)/\alpha}}
 После каждого сравнения рейтинг обновляется по формуле:  
 ```math
 R'_i = R_i + K \times (S(i|j) - E(i|j))
-```  
-где:  
-- $S(i|j) \in \{0, 0.5, 1\}$ — фактический результат (победа/ничья/поражение)  
+``` 
+
+где:
+```math
+S(i|j) \in \{0, 0.5, 1\}
+```
+фактический результат (победа/ничья/поражение)
+
+```math
 - $E(i|j) = P(Y_{ij} = 1)$ — ожидаемая вероятность победы  
 - $K$ — коэффициент чувствительности (обычно $K=32$)  
+```
 
 ##### **Statistical Estimation (Bradley-Terry Model)**
 > Модель Бредли-Терри (**Bradley-Terry**) - статистическая модель для предсказания вероятности исхода парных сравнений (pairwise comparisons). Она предполагает, что вероятность победы одного объекта над другим зависит только от их относительных характеристик.
@@ -359,12 +366,12 @@ CLIP представляет собой симметричную архитек
 
 
 
-#### **CLIP Loss**
+##### **CLIP Softmax Loss**
 
 Обозначим **Image Encoder**, как функцию $f(\cdot)$, а **Text Encoder** как функцию $g(\cdot)$, тогда для мини-батча $B = \{(I_1, T_1), (I_2, T_2), . . . \}$, функция потерь можно записать как:
 
 ```math
-\mathcal{L}_{CLIP} = -\frac{1}{2|\mathcal{B}|} \sum_i^{|\mathcal{B}|} \left(
+\mathcal{L} = -\frac{1}{2|\mathcal{B}|} \sum_i^{|\mathcal{B}|} \left(
    \log\frac{e^{t\mathbf{x}_{i} \cdot \mathbf{y}_{i}}} {\sum_{j=1}^{|B|}e^{t\mathbf{x}_{i} \cdot \mathbf{y}_{j}}} + \log \frac{e^{t\mathbf{x}_{i} \cdot \mathbf{y}_{i}}} {\sum_{j=1}^{|B|}e^{t\mathbf{x}_{j}\cdot\mathbf{y}_{i}}}   
 \right)
 ```
@@ -382,15 +389,23 @@ CLIP представляет собой симметричную архитек
 - Вычислительная сложность нормализации SoftMax
 - Ограничения памяти для больших батчей
 
-#### 4.3 SigLIP: альтернативный подход
+##### **Sigmoid Loss (SigLIP)**
+> **Zhai et al.** *"Sigmoid Loss for Language Image Pre-Training"*  
+**ICCV 2023** | [Article](https://arxiv.org/pdf/2303.15343)
+
+```math
+\mathcal{L} = -\sum_{i=1}^{\mathcal{|B|}} \sum_{j=1}^{\mathcal{|B|}} \mathcal{L}_{ij}
+```
+
+```math
+\mathcal{L}_{ij} = \log \frac{1}{1 + e^{z_{ij} (-t\mathbf{x}_{i} \cdot \mathbf{y}_{i} + b)}}
+```
+
 **Инновации**:
 - Замена SoftMax на Sigmoid
 - Переход к бинарной классификации (соответствие текст↔изображение)
 
 **Преимущества**:
-```math
-\mathcal{L}_{SigLIP} = -\sum_{(i,j)} \log \sigma(⟨I_i,T_j⟩⋅λ_{ij})
-```
 - Устранение необходимости глобальной нормализации
 - Возможность работы с бо́льшими батчами
 - Эффективность распределённых вычислений
