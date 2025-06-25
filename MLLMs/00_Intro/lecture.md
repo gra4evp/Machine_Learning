@@ -266,10 +266,9 @@ GQA (Visual Question Answering) — это датасет для оценки с
 #### **Elo Rating for Model Evaluation**  
 
 ##### **Online Elo Rating**  
-**Формула вероятности победы модели**  
-Для моделей \( i \) и \( j \) с рейтингами \( R_i \) и \( R_j \) соответственно:  
+Формула вероятности победы модели $i$ над $j$ с рейтингами $R_i$ и $R_j$ соответственно:  
 $$
-P(i \text{ wins } j) = \frac{1}{1 + 10^{(R_j - R_i)/\alpha}} \quad (\alpha = 400)
+P(i \text{ wins } j) = \frac{1}{1 + 10^{(R_j - R_i)/\alpha}}
 $$  
 
 **Онлайн-обновление рейтинга**:  
