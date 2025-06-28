@@ -47,7 +47,8 @@ GQA (Visual Question Answering) — это датасет для оценки с
   - Семантическая структура диаграмм → вопросы  
 - 📊 **Метрика**: Accuracy
 
-[![GQA_benchmark](src/pictures/002_GQA_benchmark.png)](https://arxiv.org/pdf/1902.09506)
+
+[<img src="src/pictures/002_GQA_benchmark.png" alt="GQA benchmark" style="max-width: 60%; height: auto; display: block; margin: 0 auto;" />](https://arxiv.org/pdf/1902.09506)
 
 **Методология создания датасета**
 1. **Графовая разметка изображений**:
