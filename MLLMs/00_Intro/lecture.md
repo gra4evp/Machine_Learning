@@ -84,7 +84,7 @@ GQA (Visual Question Answering) — это датасет для оценки с
   - Семантическая структура диаграмм → вопросы  
 - 📊 **Метрика**: Accuracy
 
-[<img src="src/pictures/003_AI2D_benchmark.png" alt="AI2D benchmark" style="width: 70%; height: auto; display: block; margin: 0 auto;" />](https://arxiv.org/pdf/1603.07396)
+[<img src="src/pictures/003_AI2D_benchmark.png" alt="AI2D benchmark" style="width: 60%; height: auto; display: block; margin: 0 auto;" />](https://arxiv.org/pdf/1603.07396)
 
 #### **🔧 Исходные задачи**
 1. **Diagram Parsing**
@@ -115,7 +115,7 @@ GQA (Visual Question Answering) — это датасет для оценки с
     - Тестовые задания и задачи с экспертными решениями
 - 📊 **Метрика**: Accuracy
 
-[![MMMU_benchmark](src/pictures/004_MMMU_benchmark.png)](https://arxiv.org/pdf/2311.16502)
+[<img src="src/pictures/004_MMMU_benchmark.png" alt="MMMU benchmark" style="width: 60%; height: auto; display: block; margin: 0 auto;" />](https://arxiv.org/pdf/2311.16502)
 
 #### **🔧 Методология оценки**
 - Автоматическая проверка:
@@ -139,7 +139,7 @@ GQA (Visual Question Answering) — это датасет для оценки с
    - Дополнительный сбор текстоемких изображений  
 - 📊 **Метрика**: VQA accuracy (нормализованная точность)
 
-[![TextVQA_benchmark](src/pictures/005_TextVQA_benchmark.png)](https://arxiv.org/pdf/1904.08920)
+[<img src="src/pictures/005_TextVQA_benchmark.png" alt="TextVQA benchmark" style="width: 50%; height: auto; display: block; margin: 0 auto;" />](https://arxiv.org/pdf/1904.08920)
 
 #### **🔍 Ключевые особенности**
 1. **Цель создания**:  
@@ -187,7 +187,7 @@ GQA (Visual Question Answering) — это датасет для оценки с
      ANLS = 1 - min(1, levenshtein_distance(pred, gt) / max_len(pred, gt))
      ```
 
-[![DocVQA_benchmark](src/pictures/006_DocVQA_benchmark.png)](https://arxiv.org/pdf/2007.00398)
+[<img src="src/pictures/006_DocVQA_benchmark.png" alt="DocVQA benchmark" style="width: 50%; height: auto; display: block; margin: 0 auto;" />](https://arxiv.org/pdf/2007.00398)
 
 
 #### **🔍 Ключевые особенности**
@@ -253,15 +253,17 @@ GQA (Visual Question Answering) — это датасет для оценки с
 
 
 
-[![WildVision_arena](src/pictures/007_WildVision_arena.png)](https://arxiv.org/pdf/2406.11069)
+[<img src="src/pictures/007_WildVision_arena.png" alt="WildVision arena" style="width: 60%; height: auto; display: block; margin: 0 auto;" />](https://arxiv.org/pdf/2406.11069)
 
 #### **Распределение вопросов**
 После того как авторы запустили такую арену, они получили 8k раундов, для разных моделей, тут можно посмотреть виды вопросов какие они бывают
-[![WildVision_question_distribution](src/pictures/008_WildVision_question_distribution.png)](https://arxiv.org/pdf/2406.11069)
+
+[<img src="src/pictures/008_WildVision_question_distribution.png" alt="WildVision question distribution" style="width: 60%; height: auto; display: block; margin: 0 auto;" />](https://arxiv.org/pdf/2406.11069)
 
 #### **Битвы между моделями**
 Слева показана визуализация раундов для моделей A и B, понятное дело что она симметричная матрица, справа же винрейт для соответствующих пар моделей (она уже не симметричная).
-[![WildVision_battle](src/pictures/009_WildVision_battles.png)](https://arxiv.org/pdf/2406.11069)
+
+[<img src="src/pictures/009_WildVision_battles.png" alt="WildVision battles" style="width: 70%; height: auto; display: block; margin: 0 auto;" />](https://arxiv.org/pdf/2406.11069)
 
 
 #### **Elo Rating for Model Evaluation**  
@@ -329,7 +331,7 @@ S(i|j) \in \{0, 0.5, 1\}
 По-сути, делается проекция из визуального языка, в язык который больше понятен LLM, а на выход естественный образом мы можем предсказывать текст.
 
 
-![MLLMs_general_scheme](src/pictures/011_MLLMs_General_scheme.png)
+[<img src="src/pictures/011_MLLMs_General_scheme.png" alt="MLLMs general scheme" style="width: 60%; height: auto; display: block; margin: 0 auto;" />](https://arxiv.org/pdf/2103.00020)
 
 Для того, чтобы предсказывать какую-то другую модальность на выход из LLM, например картинки, нужно дополнительно выходные эмбеддинги подать в какие-то другие модели (диффузионные, генеративные), тоже самое касается для генерации аудио или видео.
 Однако, что касается картинок на вход и на выход, то на данный момент это развито сильнее.
@@ -345,7 +347,7 @@ S(i|j) \in \{0, 0.5, 1\}
 На текущий момент стандартом де-факто для кодирования изображений в мультимодальных системах является модель **CLIP**.
 Её ключевое преимущество заключается в том, что она обучалась на огромном массиве пар "изображение-текст", что позволяет достичь высокого уровня согласованности между визуальными и текстовыми представлениями.
 
-[![CLIP_Encoder](src/pictures/012_CLIP_Encoder.png)](https://arxiv.org/pdf/2103.00020)
+[<img src="src/pictures/012_CLIP_Encoder.png" alt="CLIP encoder" style="width: 80%; height: auto; display: block; margin: 0 auto;" />](https://arxiv.org/pdf/2103.00020)
 
 CLIP представляет собой симметричную архитектуру, состоящую из двух основных компонентов **Text Encoder** И **Image Encoder**
 
