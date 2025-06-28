@@ -24,8 +24,9 @@
    Совместная обработка данных выявляет скрытые закономерности, недоступные для одномодальных моделей.  
    *Пример*: Модель может коррелировать стиль изображения с эмоциональной окраской текста.
 
+
 <div style="text-align: center">
-  <img src="src/pictures/001_MLLMs_idea.png" alt="MLLM концепция" style="max-width: 60%; height: auto"/>
+  <img src="src/pictures/001_MLLMs_idea.png" alt="MLLM концепция" width="60%" />
 </div>
 
 
