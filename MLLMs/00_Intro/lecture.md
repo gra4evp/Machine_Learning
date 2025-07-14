@@ -160,7 +160,7 @@ GQA (Visual Question Answering) — это датасет для оценки с
 
 
 
-#### **2.5 DocVQA: A Dataset for Multimodal Document Understanding**
+### **2.5 DocVQA: A Dataset for Multimodal Document Understanding**
 > **Mathew et al.** *"DocVQA: A Dataset for VQA on Document Images"*  
 **WACV 2021** | [Article](https://arxiv.org/pdf/2007.00398) | [Dataset](https://www.docvqa.org/datasets)
 
