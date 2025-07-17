@@ -578,7 +578,7 @@ S(i|j) \in \{0, 0.5, 1\}
      - **ConvNeXt** (пространственные зависимости, сверточная архитектура),  
      - **SAM** (Segment Anything Model, для сегментации).
 
-[<img src="src/pictures/018_Comparasion_fusion_methods.png" alt="Схема архитектуры Eagle" style="width: 60%; height: auto; display: block; margin: 0 auto;" />](https://arxiv.org/pdf/2408.15998)  
+[<img src="src/pictures/018_Comparasion_fusion_methods.png" alt="Схема архитектуры Eagle" style="width: 50%; height: auto; display: block; margin: 0 auto;" />](https://arxiv.org/pdf/2408.15998)  
 > *Рис. 18: Сравнение различных fusion методов, для разных вижн экспертов. “#Token(V)” обозначает количество визуальных токенов. “#Tokens/s” обозначает скорость инференса токенов, через весь пайплайн.*
 
 Если посмотреть на эффективность и на метрики, то видно, что лучше всего себя показали, удлинение контекста (**Sequence Append**) либо поканальная конкатенация (**Channel-wise Concatenation**).
@@ -656,7 +656,7 @@ S(i|j) \in \{0, 0.5, 1\}
   - 🔹 **Cross-Attention**: Агрегирует информацию из произвольного числа токенов экспертов
   - 🔹 **Выход**: Стандартизированные токены для LLM
 
-[<img src="src/pictures/023_MoV_Adapter_Architecture.png" alt="Архитектура MoV-Adapter" style="width: 50%; height: auto; display: block; margin: 0 auto;" />](https://arxiv.org/pdf/2404.13046)
+[<img src="src/pictures/023_MoV_Adapter_Architecture.png" alt="Архитектура MoV-Adapter" style="width: 40%; height: auto; display: block; margin: 0 auto;" />](https://arxiv.org/pdf/2404.13046)
 > *Рис. 23: MoV-Adapter использует механизм внимания для "сжатия" признаков от произвольного числа экспертов в фиксированный формат.*
 
 ##### **Двухэтапное обучение**
