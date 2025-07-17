@@ -744,7 +744,7 @@ S(i|j) \in \{0, 0.5, 1\}
 
 - **Q-Former (Query Transformer)** - Небольшой трансформер с обучаемыми query-токенами (например, 32 токена). которые обогащаются vision токенами, через механизм Cross-Attention.  
 
-- **XAttention LLM (Cross-Attention Integration)** - Визуальные токены подмешиваются в слои LLM на разной глубине через **гейтинг-механизм** (изначально инициализирутся нулевыми).
+- **XAttention LLM (Cross-Attention Integration)** - Визуальные токены (изначально инициализирутся нулевыми) подмешиваются в слои LLM на разной глубине через **гейтинг-механизм**.
 
 [<img src="src/pictures/027_Connector_types_scheme.png" alt="Connector_types_scheme" style="width: 70%; height: auto; display: block; margin: 0 auto;" />](https://arxiv.org/pdf/2405.19315)
 > *Рис. 27: Сравнение архитектур Connector'ов.*
