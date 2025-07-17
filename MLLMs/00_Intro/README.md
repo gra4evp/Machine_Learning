@@ -727,4 +727,26 @@ S(i|j) \in \{0, 0.5, 1\}
 
 
 [<img src="src/pictures/026_Grad-CAM_Visualization.png" alt="Grad-CAM_Visualization" style="width: 70%; height: auto; display: block; margin: 0 auto;" />](https://arxiv.org/pdf/2405.19315)
-> *Рис. 25: Grad-CAM визуализация для разного числа токенов. Меньше токенов → фокус на high-level концептах (8 токенов), больше → детализация (256 токенов).*
+> *Рис. 26: Grad-CAM визуализация для разного числа токенов. Меньше токенов → фокус на high-level концептах (8 токенов), больше → детализация (256 токенов).*
+
+
+
+
+
+### **Connector: интерфейс между визуальными и языковыми моделями**
+
+> **Назначение**:  
+> Преобразование визуальных признаков (от Vision Encoder) в формат, понятный Large Language Model (LLM), сохраняя семантическую связность.
+
+#### **Типы Connector'ов**
+
+- 1. **MLP-based (Multi-Layer Perceptron)** - обычно 1-2 линейных слоя (+ активация, например, GeLU.
+
+- 2. **Q-Former (Query Transformer)** - Небольшой трансформер с обучаемыми query-токенами (например, 32 токена). которые обогащаются vision токенами, через механизм Cross-Attention.  
+
+- 3. **XAttention LLM (Cross-Attention Integration)** - Визуальные токены подмешиваются в слои LLM на разной глубине через **гейтинг-механизм** (изначально инициализирутся нулевыми).
+
+[<img src="src/pictures/027_Connector_types_scheme.png" alt="Connector_types_scheme" style="width: 70%; height: auto; display: block; margin: 0 auto;" />](https://arxiv.org/pdf/2405.19315)
+> *Рис. 27: Сравнение архитектур Connector'ов.*
+
+
