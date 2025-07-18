@@ -318,7 +318,7 @@ S(i|j) \in \{0, 0.5, 1\}
 
 
 
-## **4. Architecture**
+## **4. Architectures**
 Мультимодальные LLM могут обрабатывать:
 - **Текстовые запросы** (стандартный вход для LLM)
 - **Нетекстовые модальности**:
@@ -337,8 +337,7 @@ S(i|j) \in \{0, 0.5, 1\}
 Однако, что касается картинок на вход и на выход, то на данный момент это развито сильнее.
 
 
-### **Encoder**
-Рассмотрим подробнее архитектуру энкодеров, начиная с визуальных.
+### **Encoders**
 
 #### **CLIP: Contrastive Language-Image Pretraining**
 > **Radford et al.** *"Learning Transferable Visual Models From Natural Language Supervision"*  
@@ -421,7 +420,7 @@ S(i|j) \in \{0, 0.5, 1\}
 
 
 
-#### **Обработка изображений высокого разрешения**
+### **Обработка изображений высокого разрешения**
 > **Liu et al.** *"Improved Baselines with Visual Instruction Tuning"*  
 **CVPR 2024** | [Article](https://arxiv.org/pdf/2310.03744)
 
@@ -444,7 +443,7 @@ S(i|j) \in \{0, 0.5, 1\}
 **Проблематика:**
 Стандартные визуальные энкодеры (например, **CLIP** с типичным разрешением 336×336 пикселей) при уменьшении разрешения входного изображения теряют критически важные детали, что неизбежно снижает качество ответов модели на вопросы, требующие анализа мелкомасштабных элементов.
 
-##### **Slicing and Dual-branch**
+#### **Slicing and Dual-branch**
 [<img src="src/pictures/013_LLaVA-1.5-HD_scaling_and_slicing_technic.png" alt="Стратегия обработки HD-изображений" style="width: 80%; height: auto; display: block; margin: 0 auto;" />](https://arxiv.org/pdf/2103.00020)
 *Рис. 2: Архитектура LLaVA-1.5-HD для обработки высоких разрешений. Изображение разделяется на сетку независимо кодируемых патчей, что позволяет, масштабироваться на произвольные разрешения без интерполяции позиционных эмбеддингов ViT, и сохранять глобальный контекст через конкатенацию фичей даунсэмплированной версии изображения (Адаптировано из Liu et al., 2024)*
 
@@ -471,7 +470,7 @@ S(i|j) \in \{0, 0.5, 1\}
 Несмотря на указанные ограничения, большинство мультимодальных моделей используют **CLIP-based энкодеры** (обычно ViT-архитектуры), имеющих плоскую структуру без иерархии признаков.
 
 
-##### **Semantic Future Pyramid**
+#### **Semantic Future Pyramid**
 > **Zhang et al.** *"LLaVA-UHD v2: an MLLM Integrating High-Resolution Semantic Pyramid via Hierarchical Window Transformer"*
 **arXiv 2024 (v2 — 19 Mar 2025)** | [Article](https://arxiv.org/pdf/2310.03744) | [Code](https://github.com/thunlp/LLaVA-UHD)
 
@@ -491,7 +490,7 @@ S(i|j) \in \{0, 0.5, 1\}
 
 
 
-#### Альтернативный подход к обработке высоких разрешений: архитектура Fuyu/Otter
+### **Альтернативный подход к обработке высоких разрешений: архитектура Fuyu/Otter**
 > **Bavishi et al.** *"Fuyu-8B: A Multimodal Architecture for AI Agents"*  
 **Adept AI, 2023** | [Article](https://www.adept.ai/blog/fuyu-8b) | [Hugging Face](https://huggingface.co/adept/fuyu-8b)
 
@@ -529,7 +528,7 @@ S(i|j) \in \{0, 0.5, 1\}
 
 
 
-#### Mixture of Encoders (MoE)  
+### **Mixture of Encoders (MoE)**
 > <details>  
 > <summary><b>Shi et al., 2025</b> ― <i>«Eagle: Exploring The Design Space for Multimodal LLMs with Mixture of Encoders»</i></summary>  
 >  
@@ -589,7 +588,7 @@ S(i|j) \in \{0, 0.5, 1\}
 
 
 
-#### **Mixture-of-Vision-expert Adapter (MoVA)** 
+### **Mixture-of-Vision-expert Adapter (MoVA)** 
 > <details>  
 > <summary><b>Zong et al., 2024</b> ― <i>«MoVA: Adapting Mixture of Vision Experts to Multimodal Context»</i></summary>  
 >  
@@ -608,7 +607,7 @@ S(i|j) \in \{0, 0.5, 1\}
 **Решение: Динамический роутинг экспертов**  
 Ключевая идея **MoVA** - "Не запускать все энкодеры сразу, а выбирать 1-2 релевантных для конкретного запроса"  
 
-##### **Архитектура (Рис. 20)**  
+#### **Архитектура**  
 1. **Роутер (LLM)**:  
    - **Вход**: Изображение (через базовый **CLIP** + Downsampling) + текстовый запрос.  
    - **Механизм**:  
@@ -622,7 +621,7 @@ S(i|j) \in \{0, 0.5, 1\}
 [<img src="src/pictures/020_MoVA_Pipeline.png" alt="Архитектура MoVA" style="width: 80%; height: auto; display: block; margin: 0 auto;" />](https://arxiv.org/pdf/2404.13046)
 > *Рис. 20: Pipeline MoVA. Роутинг на основе мультимодального контекста с последующим адаптивным fusion.*
 
-##### **Пример работы (Рис. 21)**  
+#### **Пример работы**  
 **Промпт роутера**:  
 ```markdown
 Доступные эксперты:  
@@ -637,7 +636,7 @@ S(i|j) \in \{0, 0.5, 1\}
 [<img src="src/pictures/021_Example_Routing_Prompt_for_Experts.png" alt="Пример промпта для роутинга" style="width: 80%; height: auto; display: block; margin: 0 auto;" />](https://arxiv.org/pdf/2404.13046)
 > *Рис. 21: Пример текстового промпта для выбора экспертов. LLM анализирует задачу и контекст. В верхнем блоке представлены мультимодальные входные данные, а в нижнем - языковой ответ.*
 
-##### Преимущества  
+#### **Преимущества**
 - **Гибкость**: Добавление новых экспертов требует только обновления промпта (без изменения архитектуры).  
 - **Эффективность**: Снижение вычислений в 4-8 раз по сравнению с "включением всех" энкодеров.  
 - **Интерпретируемость**: Логика выбора экспертов прозрачна (через текстовые объяснения LLM).  
@@ -647,8 +646,8 @@ S(i|j) \in \{0, 0.5, 1\}
 - Требует тонкой настройки адаптера для новых задач.  
 
 ---
-##### **MoV-Adapter** 
-При это стоит упомянуть, что **MoV-Adapter** - некоторый маленький трансформер для унификации выходов различных Vision Experts в фиксированный набор токенов для LLM.
+#### **MoV-Adapter** 
+Стоит упомянуть, что **MoV-Adapter** - некоторый маленький трансформер для унификации выходов различных Vision Experts в фиксированный набор токенов для LLM.
 
 **Архитектура (Рис. 23)**:  
 - Небольшой **трансформер** с обучаемыми параметрами:
@@ -659,7 +658,7 @@ S(i|j) \in \{0, 0.5, 1\}
 [<img src="src/pictures/023_MoV_Adapter_Architecture.png" alt="Архитектура MoV-Adapter" style="width: 40%; height: auto; display: block; margin: 0 auto;" />](https://arxiv.org/pdf/2404.13046)
 > *Рис. 23: MoV-Adapter использует механизм внимания для "сжатия" признаков от произвольного числа экспертов в фиксированный формат.*
 
-##### **Двухэтапное обучение**
+#### **Двухэтапное обучение**
 [<img src="src/pictures/022_Training_Strategy_of_MoVA.png" alt="Стратегия обучения MoVA" style="width: 80%; height: auto; display: block; margin: 0 auto;" />](https://arxiv.org/pdf/2404.13046)
 > *Рис. 22: Поэтапное обучение MoVA. Важно: эксперты никогда не обновляются — сохраняется их специализированное качество.*
 
@@ -692,7 +691,7 @@ S(i|j) \in \{0, 0.5, 1\}
 
 
 
-#### **Context Compression: Matryoshka Query Transformer (MQT)**
+### **Context Compression: Matryoshka Query Transformer (MQT)**
 > <details>  
 > <summary><b>Hu et al., 2024</b> ― <i>«Matryoshka Query Transformer for Large Vision-Language Models»</i></summary>  
 >  
@@ -708,7 +707,7 @@ S(i|j) \in \{0, 0.5, 1\}
 > *Рис. 24: Query Transformer кодирует изображение в иерархические токены. Во время обучения случайно выбирается m токенов (2 ≤ m ≤ 256), на инференсе — гибкий выбор любого m.*
 
 
-##### **Принцип работы**
+#### **Принцип работы**
 1. **Иерархические токены**:
    - Нужно получить токены запросы, которыу будут вкладываться другу в друга как матрешки. Стартуют с двух токенов (они будут нести основую информацию про изображение), дальше можно добавить ещё парочку (т.е уже станет 4) -> детайлей станет больше. Чем-то это напоминает метод главных компонент, только все обучается.
      - Базовые (2-4 токена): глобальная информация об изображении
@@ -721,7 +720,7 @@ S(i|j) \in \{0, 0.5, 1\}
 
 На этапе обучения количество токенов, подаваемое в трансформер случайно варьируется (2 - 256 токенов), но в среднем модель будет видеть 128 токенов.
 
-##### **Результаты**
+#### **Результаты**
 [<img src="src/pictures/025_Metrics_MQT-LLAVA_vs_other_models.png" alt="Grad-CAM_Visualization" style="width: 70%; height: auto; display: block; margin: 0 auto;" />](https://arxiv.org/pdf/2405.19315)
 > *Рис. 25: MQT-LLaVA сохраняет точность LLaVA-1.5 при 256 токенах (2× ускорение), даёт 8× ускорение при 16 токенах (просадка всего 2.4%).*
 
@@ -749,4 +748,76 @@ S(i|j) \in \{0, 0.5, 1\}
 [<img src="src/pictures/027_Connector_types_scheme.png" alt="Connector_types_scheme" style="width: 70%; height: auto; display: block; margin: 0 auto;" />](https://arxiv.org/pdf/2405.19315)
 > *Рис. 27: Сравнение архитектур Connector'ов.*
 
+---
 
+## **5. Обзор нескольких популярных моделей**
+### **5.1 Large Language and Vision Assistant (LLaVA)**
+> <details>  
+> <summary><b>Liu et al., 2024</b> ― <i>«Visual Instruction Tuning»</i></summary>  
+>  
+> - 🎯 **Venue**: NeurIPS 2023 
+> - 📜 **Article**: [arXiv PDF](https://arxiv.org/pdf/2304.08485)
+> - 💻 **Code**: [GitHub](https://github.com/haotian-liu/LLaVA)
+> - 🌐 **Site**: https://llava-vl.github.io/
+> </details>
+
+
+Начнем с базой модели это LLaVA. Работает следующим образом: есть LLM - Vicuna 7B
+Vision Encoder - CLIP ViT-L/14
+Connector(Projection) - Linear (MLP)
+#### **Архитектура LLaVA**
+
+**Ключевые компоненты**:
+- **Языковая модель**: Vicuna (7B параметров)
+- **Визуальный энкодер**: CLIP ViT-L/14
+- **Коннектор**: Линейный слой (MLP)
+
+[<img src="src/pictures/028_LLaVA_Architecture.png" alt="LLaVA_Architecture" style="width: 70%; height: auto; display: block; margin: 0 auto;" />](https://arxiv.org/pdf/2304.08485)
+> *Рис. 28: Архитектура LLaVA. Визуальные признаки проецируются в пространство языковой модели через линейный слой.*
+
+**Процесс обработки**:
+1. Извлечение признаков: CLIP обрабатывает изображение (фиксированное разрешение 336×336)
+2. Проекция: Линейный слой преобразует визуальные токены
+3. Конкатенация: Объединение с текстовыми токенами
+4. Генерация: Языковая модель формирует ответ
+
+
+#### **Обучение в два этапа**
+
+1. **Pretraining**:
+   - ❄️ Заморожены: Языковая модель, Vision Encoder
+   - 🔥 Обучается: Только проекционный слой (MLP)
+   - **Цель**: Научить модель "понимать" визуальные признаки
+
+2. **Fine tuning**:
+   - ❄️ Заморожен: Vision Encoder
+   - 🔥 Обучаются: Проекционный слой + языковая модель
+   - **Данные**: Инструктивные данные (instruction-following)
+
+#### **Генерация обучающих данных**
+
+**Проблема**: Академические датасеты содержат короткие и формальные вопросы/ответы, не отражающие реальное общение.
+
+**Решение LLaVA**:  
+Использование GPT для генерации синтетических инструктивных данных:
+1. Исходные данные: Изображения с разметкой (bbox) + текстовое описание
+2. Генерация:
+   - GPT создает разнообразные вопросы (от простых до детализированных)
+   - GPT формулирует развернутые ответы
+3. Результат: Набор данных, имитирующий человеческое общение
+
+[<img src="src/pictures/029_LLaVA_Instruction-following_data.png" alt="LLaVA_Instruction-following_data" style="width: 70%; height: auto; display: block; margin: 0 auto;" />](https://arxiv.org/pdf/2304.08485)
+> *Рис. 29: Процесс создания инструктивных данных. GPT генерирует вопросы и ответы на основе текстового описания изображения.*
+
+
+
+
+
+### Molmo
+> <details>  
+> <summary><b>Deitke et al., 2024</b> ― <i>«Molmo and PixMo: Open Weights and Open Data for State-of-the-Art Vision-Language Models»</i></summary>  
+>  
+> - 🎯 **Venue**: NeurIPS 2023 
+> - 📜 **Article**: [arXiv PDF](https://arxiv.org/pdf/2409.17146)
+> - 🌐 **Site**: https://allenai.org/blog/molmo
+> </details>
